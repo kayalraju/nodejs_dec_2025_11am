@@ -4,11 +4,7 @@ const app=express();
 
 
 
-app.get('/',(req,res)=>{
 
-    res.send('<h1>hello world</h1>');
-
-})
 
 app.get('/product',(req,res)=>{
     const products=[
@@ -27,7 +23,8 @@ app.get('/about',(req,res)=>{
 
 })
 
-
+const homeRoute=require('./app/routes/homeRoute');
+app.use(homeRoute)
 
 const port=7000;
 app.listen(port,()=>{
