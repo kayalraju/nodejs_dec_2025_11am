@@ -1,27 +1,15 @@
 
 const express=require('express');
+const ejs=require('ejs');
 const app=express();
 
 
+app.set('view engine','ejs');
+app.set('views','views');
 
 
 
-app.get('/product',(req,res)=>{
-    const products=[
-        {name:'laptop',price:10000},
-        {name:'mobile',price:20000},
-        {name:'tv',price:30000},
-        {name:'camera',price:40000},
-    ]
 
-    res.send(products);
-})
-
-app.get('/about',(req,res)=>{
-
-    res.send('<h1>hello about</h1>');
-
-})
 
 const homeRoute=require('./app/routes/homeRoute');
 app.use(homeRoute)

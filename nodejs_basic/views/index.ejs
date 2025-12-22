@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+
+    <h1 style="background-color: aqua;">Home Page</h1>
+
+
+    <% if (false) { %>
+   <h1><a href="/About">About</a></h1>
+        <% }else { %>
+
+            <h1>Page not found</h1>
+
+
+            <%}%>
+
+
+            <% if(data){%>
+                <h3> company Name is<%= data.name %></h3>
+                <h3> Company age is<%= data.age %></h3>
+
+
+                <%}%>
+
+
+    
+    
+</body>
+</html>

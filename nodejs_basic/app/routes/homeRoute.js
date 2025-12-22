@@ -7,10 +7,7 @@ const Router=express.Router();
 
 Router.get('/',HomeController.home)
 
-// Router.get('/',(req,res)=>{
-//     res.send('<h1>home page</h1>');
-
-// })
+Router.get('/About',HomeController.about)
 
 
 module.exports=Router;
