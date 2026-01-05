@@ -10,7 +10,6 @@ class HomeController{
         }
 
        res.render('index',{
-        title:'Home Page',
         data:user
        });
     }
