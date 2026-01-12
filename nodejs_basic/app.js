@@ -25,7 +25,7 @@ const homeRoute=require('./app/routes/homeRoute');
 app.use(homeRoute)
 
 const studentApiRoute=require('./app/routes/studentApiRoute');
-app.use(studentApiRoute)
+app.use('/api/v1',studentApiRoute)
 
 const port=7000;
 app.listen(port,()=>{

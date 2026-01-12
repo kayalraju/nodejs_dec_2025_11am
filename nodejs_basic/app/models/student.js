@@ -13,6 +13,8 @@ const StudentSchema=new Schema({
         required: true
     },
     
+},{
+    timestamps: true
 })
 
 
