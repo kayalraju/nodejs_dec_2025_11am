@@ -3,6 +3,7 @@ const express=require('express');
 const ejs=require('ejs');
 const path=require('path');
 const DbConnection=require('./app/config/db');
+const cors=require('cors');
 
 
 
@@ -10,6 +11,8 @@ const DbConnection=require('./app/config/db');
 const app=express();
 
 DbConnection();
+
+app.use(cors());
 
 app.set('view engine','ejs');
 app.set('views','views');
@@ -24,8 +27,13 @@ app.use(express.urlencoded({extended:false}))
 const homeRoute=require('./app/routes/homeRoute');
 app.use(homeRoute)
 
+//api route
 const studentApiRoute=require('./app/routes/studentApiRoute');
 app.use('/api/v1',studentApiRoute)
+
+//ejs route
+const studentEjsRoute=require('./app/routes/studentEjsRoute');
+app.use(studentEjsRoute)
 
 const port=7000;
 app.listen(port,()=>{
