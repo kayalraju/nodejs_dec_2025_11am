@@ -1,23 +1,28 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-
-const StudentSchema=new Schema({
+const StudentSchema = new Schema(
+  {
     name: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     email: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
-    
-},{
-    timestamps: true
-})
 
+    isDeleted: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
 
-const StudentMOdel=mongoose.model('student',StudentSchema)
+const StudentMOdel = mongoose.model("student", StudentSchema);
 
-module.exports=StudentMOdel
+module.exports = StudentMOdel;

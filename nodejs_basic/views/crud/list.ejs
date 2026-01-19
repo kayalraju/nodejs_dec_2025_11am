@@ -35,8 +35,10 @@
       <td><%= student.name %></td>
       <td><%= student.email %></td>
       <td><%= student.createdAt %></td>
-      <td><a href="/edit/1" class="btn btn-primary">Edit</a></td>
-      <td><a href="/delete/1" class="btn btn-danger">Delete</a></td>
+      <td><a href="/student/edit/<%= student._id %>" class="btn btn-primary">Edit</a></td>
+      <!-- hard delete -->
+      <!-- <td><a href="/student/delete/<%= student._id %>" class="btn btn-danger">Delete</a></td> -->
+       <td><a href="/student/softdelete/<%= student._id %>" class="btn btn-danger">Delete</a></td>
     </tr>
     <%}%>
   </tbody>

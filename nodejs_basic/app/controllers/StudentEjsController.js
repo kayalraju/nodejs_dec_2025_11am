@@ -3,7 +3,7 @@ const Student = require('../models/student')
 class StudentEjsController {
     async list(req, res) {
         try{
-            const data=await Student.find()
+            const data=await Student.find({isDeleted:false})
             res.render('crud/list',{
                 data:data
             })
@@ -30,6 +30,54 @@ class StudentEjsController {
        }catch(error){
            console.log(error)
        }
+    }
+
+
+    async edit(req,res){
+        try{
+            const id=req.params.id
+            const data=await Student.findById(id)
+            res.render('crud/edit',{
+                data:data
+            })
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+    async update(req,res){
+        try{
+            const id=req.params.id
+           
+            const data=await Student.findByIdAndUpdate(id,req.body,{new:true})
+            return res.redirect('/student/list')
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+    //hard delete
+    async delete(req,res){
+        try{
+            const id=req.params.id
+            const data=await Student.findByIdAndDelete(id)
+            return res.redirect('/student/list')
+        }catch(error){
+             return res.redirect('/student/list')
+        }
+    }
+
+
+
+    //soft delete
+    async softDelete(req,res){
+        try{
+            const id=req.params.id
+            const data=await Student.findByIdAndUpdate(id,{$set:{isDeleted:true}},{new:true})
+            return res.redirect('/student/list')
+        }catch(error){
+             return res.redirect('/student/list')
+        }
     }
 }
 
