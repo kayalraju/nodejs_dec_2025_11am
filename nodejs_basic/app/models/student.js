@@ -12,6 +12,10 @@ const StudentSchema = new Schema(
       type: String,
       required: true,
     },
+    image: {
+      type: String,
+      default:"https://png.pngtree.com/png-vector/20231019/ourmid/pngtree-user-profile-avatar-png-image_10211467.png",
+    },
 
     isDeleted: {
       type: Boolean,

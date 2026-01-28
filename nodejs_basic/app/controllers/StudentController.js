@@ -5,6 +5,9 @@ class StudentController{
 
     async createStudent(req,res){
         //console.log(req.body);
+
+        //console.log(req.file);
+        
         
         try{
             const {name,email}=req.body;
@@ -12,7 +15,9 @@ class StudentController{
                 name,
                 email
             })
-
+            if(req.file){
+                data.image=req.file.path
+            }
             await data.save()
             return res.status(StatusCode.CREATED).json({
                 success:true,
