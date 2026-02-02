@@ -7,6 +7,7 @@ const StudentSchema = new Schema(
     name: {
       type: String,
       required: true,
+    
     },
     email: {
       type: String,
@@ -24,8 +25,9 @@ const StudentSchema = new Schema(
   },
   {
     timestamps: true,
-  },
-);
+  },);
+
+  StudentSchema.index({ name: 1})
 
 const StudentMOdel = mongoose.model("student", StudentSchema);
 

@@ -13,6 +13,12 @@ Router.put('/student/update/:id',StudentController.updateStudent);
 Router.delete('/student/delete/:id',StudentController.deleteStudent);
 
 
+
+Router.get('/student/:name', StudentController.getstudentdata)
+
+
+
+
 module.exports=Router;
 
 

@@ -38,6 +38,9 @@ app.use('/api/v1',studentApiRoute)
 const studentEjsRoute=require('./app/routes/studentEjsRoute');
 app.use(studentEjsRoute)
 
+const userRoute=require('./app/routes/userRoute');
+app.use(userRoute);
+
 const port=7000;
 app.listen(port,()=>{
     console.log(`server is running on port: http://localhost:${port}`);

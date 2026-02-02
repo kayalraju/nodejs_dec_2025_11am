@@ -11,6 +11,13 @@ class StudentController{
         
         try{
             const {name,email}=req.body;
+            const existingStudent=await Student.findOne({email:email})
+            if(existingStudent){
+                return res.status(StatusCode.BAD_REQUEST).json({
+                    success:false,
+                    message:'student email already exist'
+                })
+            }
             const data= new Student({
                 name,
                 email
@@ -105,6 +112,25 @@ class StudentController{
 
         }catch(error){
             return res.status(500).json({
+                success:false,
+                message:error.message
+            }) 
+        }
+    }
+
+
+    async getstudentdata(req,res){
+        try{
+            const name=req.params.name;
+            const data=await Student.find({name:name})
+            return res.status(200).json({
+                success:true,
+                message:'get student successfully',
+                data:data
+            })
+
+        }catch(error){
+           return res.status(500).json({
                 success:false,
                 message:error.message
             }) 
