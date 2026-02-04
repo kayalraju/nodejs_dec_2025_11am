@@ -38,6 +38,9 @@ app.use('/api/v1',studentApiRoute)
 const studentEjsRoute=require('./app/routes/studentEjsRoute');
 app.use(studentEjsRoute)
 
+const csvRoute=require('./app/routes/csvRoute');
+app.use(csvRoute)
+
 const userRoute=require('./app/routes/userRoute');
 app.use(userRoute);
 
