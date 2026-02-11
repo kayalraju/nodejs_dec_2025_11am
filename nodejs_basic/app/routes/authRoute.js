@@ -7,6 +7,7 @@ const Router=express.Router();
 
 
 Router.post('/register',AuthController.register);
+Router.post('/verify/account',AuthController.verifyAccount);
 Router.post('/login',AuthController.login);
 Router.get('/profile',AuthCheck,AuthController.profile);
 
