@@ -11,4 +11,7 @@ Router.post('/verify/account',AuthController.verifyAccount);
 Router.post('/login',AuthController.login);
 Router.get('/profile',AuthCheck,AuthController.profile);
 
+Router.post('/reset-password-link',AuthController.resetPasswordLink);
+Router.post('/reset-password/:id/:token',AuthController.resetPassword);
+
 module.exports=Router;
