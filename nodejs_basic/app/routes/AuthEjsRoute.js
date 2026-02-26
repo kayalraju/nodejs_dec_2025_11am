@@ -15,4 +15,8 @@ Router.get('/logout',AuthEjsController.logout);
 Router.get('/user/dashboard',CheckAuth ,AuthEjsController.AuthUserCheck,AuthEjsController.dashboard);
 
 
+
+//admin login
+Router.post('/admin/login/store',AuthEjsController.LoginCreate);
+
 module.exports=Router;

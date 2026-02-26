@@ -39,6 +39,11 @@ app.use('/uploads',express.static(path.join(__dirname,'/uploads')))
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 
+
+
+const employeeRoute=require('./app/routes/employeeRoute');
+app.use(employeeRoute)
+
 //auth route
 const authRoute=require('./app/routes/authRoute');
 app.use('/api/auth',authRoute)
