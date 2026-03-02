@@ -41,6 +41,9 @@ app.use(express.urlencoded({extended:false}))
 
 
 
+const LookupRoute=require('./app/routes/lookup');
+app.use(LookupRoute);
+
 const employeeRoute=require('./app/routes/employeeRoute');
 app.use(employeeRoute)
 
