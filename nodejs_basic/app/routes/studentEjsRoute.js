@@ -7,7 +7,7 @@ const Router=express.Router();
 
 
 
-Router.get('/student/list',checkUser,StudentEjsController.list);
+Router.get('/student/list',StudentEjsController.list);
 Router.get('/student/add',StudentEjsController.add);
 Router.post('/student/create',StudentEjsController.create);
 Router.get('/student/edit/:id',StudentEjsController.edit);

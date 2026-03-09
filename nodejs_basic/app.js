@@ -2,17 +2,18 @@ require('dotenv').config();
 const express=require('express');
 const ejs=require('ejs');
 const path=require('path');
-const DbConnection=require('./app/config/db');
+//const DbConnection=require('./app/config/db');
 const cors=require('cors');
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
-
+const sequelize=require('./app/config/db');
+require('./app/models/index');
 
 
 
 const app=express();
 
-DbConnection();
+// DbConnection();
 
 app.use(cors());
 
@@ -41,6 +42,11 @@ app.use(express.urlencoded({extended:false}))
 
 
 
+//define routes
+
+const Routes=require('./app/routes/')
+app.use(Routes);
+
 const LookupRoute=require('./app/routes/lookup');
 app.use(LookupRoute);
 
@@ -55,8 +61,7 @@ const homeRoute=require('./app/routes/homeRoute');
 app.use(homeRoute)
 
 
-const authEjsRoute=require('./app/routes/AuthEjsRoute');
-app.use(authEjsRoute)
+
 
 //api route
 const studentApiRoute=require('./app/routes/studentApiRoute');
@@ -73,6 +78,13 @@ const userRoute=require('./app/routes/userRoute');
 app.use(userRoute);
 
 const port=7000;
-app.listen(port,()=>{
-    console.log(`server is running on port: http://localhost:${port}`);
-})
+// app.listen(port,()=>{
+//     console.log(`server is running on port: http://localhost:${port}`);
+// })
+
+sequelize.authenticate()
+  .then(() => {
+    console.log("✅ Database connected");
+    app.listen(port, () => console.log(`🚀 Server running on port ${port}`));
+  })
+  .catch(err => console.error("❌ DB connection error:", err));
