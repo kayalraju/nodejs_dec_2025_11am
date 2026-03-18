@@ -22,9 +22,9 @@ class StudentController{
                 name,
                 email
             })
-            if(req.file){
-                data.image=req.file.path
-            }
+            // if(req.file){
+            //     data.image=req.file.path
+            // }
             await data.save()
             return res.status(StatusCode.CREATED).json({
                 success:true,

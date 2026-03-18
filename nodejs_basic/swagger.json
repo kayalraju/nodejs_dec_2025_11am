@@ -1,0 +1,36 @@
+{
+    "swaggerDefinition": {
+      "info": {
+        "title": "Nodejs Basic API",
+        "version": "1.0.0",
+        "description": "API documentation create by webskitters",
+        "contact": {
+          "name": "Raju kayal"
+        },
+        "servers": [
+          "http://localhost:7000"
+          
+        ]  
+      },
+      "tags": [
+        {
+            "name": "Student",
+            "description": "Student CRUD API"
+        },
+        {
+            "name": "Product",
+            "description": "Product API"
+        },
+        {
+            "name": "Auth",
+            "description": "Authentication API"
+        }
+    ],
+    "schemes": "['https', 'http']"
+      
+    },
+    "apis": [
+      "app.js",
+      "./app/routes/*.js"
+    ]
+  }

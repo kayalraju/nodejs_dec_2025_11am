@@ -2,18 +2,23 @@ require('dotenv').config();
 const express=require('express');
 const ejs=require('ejs');
 const path=require('path');
-//const DbConnection=require('./app/config/db');
+const DbConnection=require('./app/config/db');
 const cors=require('cors');
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
 const sequelize=require('./app/config/db');
-require('./app/models/index');
+//require('./app/models/index');
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
+const SwaggerOptions = require('./swagger.json');
+const swaggerDocument = swaggerJsDoc(SwaggerOptions);
+
 
 
 
 const app=express();
 
-// DbConnection();
+ DbConnection();
 
 app.use(cors());
 
@@ -40,12 +45,12 @@ app.use('/uploads',express.static(path.join(__dirname,'/uploads')))
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 
-
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 //define routes
 
-const Routes=require('./app/routes/')
-app.use(Routes);
+// const Routes=require('./app/routes/')
+// app.use(Routes);
 
 const LookupRoute=require('./app/routes/lookup');
 app.use(LookupRoute);
@@ -78,13 +83,13 @@ const userRoute=require('./app/routes/userRoute');
 app.use(userRoute);
 
 const port=7000;
-// app.listen(port,()=>{
-//     console.log(`server is running on port: http://localhost:${port}`);
-// })
+app.listen(port,()=>{
+    console.log(`server is running on port: http://localhost:${port}`);
+})
 
-sequelize.authenticate()
-  .then(() => {
-    console.log("✅ Database connected");
-    app.listen(port, () => console.log(`🚀 Server running on port ${port}`));
-  })
-  .catch(err => console.error("❌ DB connection error:", err));
+// sequelize.authenticate()
+//   .then(() => {
+//     console.log("✅ Database connected");
+//     app.listen(port, () => console.log(`🚀 Server running on port ${port}`));
+//   })
+//   .catch(err => console.error("❌ DB connection error:", err));
