@@ -1,3 +1,4 @@
+const { logger } = require('../config/emailConfig');
 const StatusCode = require('../helper/StatusCode');
 const Student=require('../models/student')
 
@@ -7,6 +8,8 @@ class StudentController{
         //console.log(req.body);
 
         //console.log(req.file);
+
+        logger.info(req.body);
         
         
         try{

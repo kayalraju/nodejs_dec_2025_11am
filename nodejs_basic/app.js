@@ -12,6 +12,7 @@ const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 const SwaggerOptions = require('./swagger.json');
 const swaggerDocument = swaggerJsDoc(SwaggerOptions);
+const logger=require('./app/utils/logger');
 
 
 
@@ -84,7 +85,8 @@ app.use(userRoute);
 
 const port=7000;
 app.listen(port,()=>{
-    console.log(`server is running on port: http://localhost:${port}`);
+    //console.log(`server is running on port: http://localhost:${port}`);
+    logger.info(`server is running on port: http://localhost:${port}`);
 })
 
 // sequelize.authenticate()

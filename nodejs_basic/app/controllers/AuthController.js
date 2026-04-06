@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const sendEmail = require("../utils/sendMail");
 const OTPModel = require("../models/otpModel");
 const transporter=require('../config/emailConfig') 
+const logger=require('../utils/logger')
 
 
 class AuthController {
@@ -191,7 +192,8 @@ class AuthController {
   
 
     }catch(error){
-      console.log(error);
+      //console.log(error);
+      logger.error(error);
       
     }
 
